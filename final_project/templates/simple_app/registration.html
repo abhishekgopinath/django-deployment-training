@@ -1,0 +1,16 @@
+{% extends 'simple_app/base.html' %} {% block body_block%}
+<div class="container">
+  <h1>Welcome to AG User Registration page.</h1>
+  {% if registered %}
+  <h1>Thank you for registering. Your details have been saved successfully.</h1>
+  {% else %}
+  <h1>Fill in the below form to create an account.</h1>
+  <form method="POST" enctype="multipart/form-data" >
+    <div class="form-group">
+    {% csrf_token %} {{ user_form.as_p}} {{ profile_form.as_p}}
+    <input type="submit" value="Register" class="btn btn-primary"/>
+    </div>
+  </form>
+  {% endif %}
+</div>
+{% endblock%}
